@@ -5,6 +5,7 @@ import store from './redux/store';
 import VisibleTodoList from './containers/VisibleTodoList';
 import Footer from './components/Footer';
 import './App.css';
+import AddTodo from './containers/AddTodo';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <h1>Welcome to the TODO App</h1>
             {/*<AddTodo/>*/}
             <VisibleTodoList/>
+            <AddTodo/>
             <Footer/>
         </div>
       </Provider>

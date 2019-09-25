@@ -1,15 +1,15 @@
-import { TOGGLE_TODO } from "../actionTypes";
+import uuid from 'uuid/v4';
+import { TOGGLE_TODO, ADD_TODO } from "../actionTypes";
 
 
-const initialState = {1: {id: 1, title: 'test', completed: false}, 2: {id: 2, title: 'fun', completed: false}};
+const initialState = {};
 
 
 const todos = (state=initialState, action) => {
+    const newState = {...state};
     switch(action.type) {
         case TOGGLE_TODO:
-
             //handle todos as an object
-            const newState = {...state};
             const currTodo = {...newState[action.payload.id]};
             newState[action.payload.id] = {...currTodo, completed: !currTodo.completed};
 
@@ -18,9 +18,15 @@ const todos = (state=initialState, action) => {
             // return {...state, todos}
 
             return newState;
+        case ADD_TODO:
+            console.log(action)
+            const id = uuid();
+            newState[id] = {id, title: action.payload.title, completed: false}
+            return newState;
         default:
             return state;
     }
+
 };
 
 
