@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import SubmitButton from './pallet/SubmitButton';
 
 
 const AddTodoFrom = ({ addTodo }) => {
@@ -43,7 +44,7 @@ const AddTodoFrom = ({ addTodo }) => {
                     onChange={(event) => setTodoName(event.target.value)}
                     placeholder={placeholder}
                 />
-                <button type='submit' className='btn btn-primary btn-sm'>Add Todo</button>
+                <SubmitButton title={'Add Todo'} type='primary' size='small'></SubmitButton>
             </form>
         </div>
     )

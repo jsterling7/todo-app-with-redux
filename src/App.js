@@ -1,15 +1,15 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import store from './redux/store';
+import configureStore from './redux/store';
 import VisibleTodoList from './containers/VisibleTodoList';
 import Footer from './components/Footer';
 import './App.css';
 import AddTodo from './containers/AddTodo';
-import Card from './components/Card';
+import Card from './components/pallet/Card';
 
 function App() {
   return (
-      <Provider store={store}>
+      <Provider store={configureStore()}>
             <div className='container pt-3'>
                 <div className='row justify-content-center pb-3'>
                     <div className='col-auto'>
@@ -37,9 +37,7 @@ function App() {
                         </Card>
                     </div>
                 </div>
-
             </div>
-
       </Provider>
   );
 }
