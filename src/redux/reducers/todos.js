@@ -1,5 +1,5 @@
 import uuid from 'uuid/v4';
-import { TOGGLE_TODO, ADD_TODO } from "../actionTypes";
+import {TOGGLE_TODO, ADD_TODO, DELETE_TODO} from "../actionTypes";
 
 
 const initialState = {};
@@ -19,9 +19,11 @@ const todos = (state=initialState, action) => {
 
             return newState;
         case ADD_TODO:
-            console.log(action)
             const id = uuid();
             newState[id] = {id, title: action.payload.title, completed: false}
+            return newState;
+        case DELETE_TODO:
+            delete newState[action.payload.id];
             return newState;
         default:
             return state;

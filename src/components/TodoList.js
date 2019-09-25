@@ -2,11 +2,11 @@ import React from 'react';
 import Todo from './Todo';
 
 
-const TodoList = ({ todos, toggleTodo }) => {
-    const todosList = todos.map(todo => <li><Todo key={todo.id} todo={todo} toggleTodo={toggleTodo}/></li>);
+const TodoList = ({ todos, toggleTodo, deleteTodo }) => {
+    const todosList = todos.map(todo => <li key={todo.id} className='list-group-item'><Todo todo={todo} toggleTodo={toggleTodo} deleteTodo={deleteTodo}/></li>);
     return (
          <div>
-             <ul>
+             <ul className='list-group'>
                 {todosList}
              </ul>
          </div>

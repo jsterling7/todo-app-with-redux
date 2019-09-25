@@ -17,3 +17,9 @@ export const addTodo = title => ({
    type: actionTypes.ADD_TODO,
    payload: { title }
 });
+
+
+export const deleteTodo = id => ({
+   type: actionTypes.DELETE_TODO,
+   payload: { id }
+});
