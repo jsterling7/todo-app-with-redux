@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import SubmitButton from './pallet/SubmitButton';
+import TextInput from './pallet/TextInput';
 
 
 const AddTodoFrom = ({ addTodo }) => {
 
-    const [todoName, setTodoName] = useState('');
+    const textInputRef = React.useRef(null);
+
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
     const placeholders = ['make dinner', 'mow the lawn', 'go to the store'];
     const [placeholder, setPlaceholder]  = useState(placeholders[0]);
+
 
     useEffect(() => {
         const getNextPlaceHolder = () => {
@@ -26,25 +29,28 @@ const AddTodoFrom = ({ addTodo }) => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        setTodoName('');
+        addTodo(textInputRef.current.value);
         if (!hasSubmitted) {
             setPlaceholder('');
             setHasSubmitted(true);
         }
-        addTodo(todoName);
+        textInputRef.current.value = '';
     };
 
 
     return (
         <div>
             <form onSubmit={handleSubmit} className="form-inline">
-                <input
-                    className="form-control form-control-sm mr-1"
-                    value={todoName}
-                    onChange={(event) => setTodoName(event.target.value)}
-                    placeholder={placeholder}
-                />
-                <SubmitButton title={'Add Todo'} type='primary' size='small'></SubmitButton>
+                <div className='row justify-content-center'>
+                    <div className='col-auto p-0 pr-1'>
+                        <TextInput
+                            textInputRef={textInputRef}
+                            placeholder={placeholder} />
+                    </div>
+                    <div className='col-auto p-0'>
+                        <SubmitButton title='Add Todo' type='primary' size='medium' />
+                    </div>
+                </div>
             </form>
         </div>
     )
